@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Wookie{
+            constructor(nom, taille) {
+                this.nom = nom;
+                this.taille = taille;
+            }
+
+            hurler() {
+                console.log('rrrroaaar (class)');
+            }
+        }
+
+        var unWookie = { nom: 'chewie', taille: 1.8 };
+
+        unWookie.hurler = function() {
+            console.log('rrrroaaar (add function)');
+        }
+
+        var unWookie2 = new Wookie();
+        unWookie2.hurler();
+
+        unWookie.hurler();
+
+        var UnAutreWookie = function() {};
+        UnAutreWookie.prototype.hurler = () => { console.log('rrrroaaar (proto)') }
+
+        var unAutreWookie = new UnAutreWookie();
+        unAutreWookie.hurler();
+        
+    </script>
+</body>
+</html>
