@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const array = []; // empty array
+
+        const array2 = [1, 2, 3]; // array with data
+
+        const array3 = [1, 2, 'coucou']; // array with data bis
+        
+
+        for (let index = 0; index < array2.length; index++) {
+            const element = array2[index];
+            
+            console.log('for: item[' + index + ']', element);
+        }
+
+        array3.forEach((item, index) => {
+            console.log(`foreach: item[ ${index}]`, item);
+        });
+
+        const arrayObject = {
+            name: 'chewie',
+            size: 280
+        };
+
+        console.log(`(obj): arrayObject[name]`, arrayObject['name']);
+
+        console.log('Est un tableau ? arrayObject', arrayObject instanceof Array);
+        console.log('Est un tableau ? array3', array3 instanceof Array);
+    </script>
+</body>
+</html>
