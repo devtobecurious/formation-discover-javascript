@@ -1,0 +1,16 @@
+{
+	"folders": [{
+			"path": "C:\\Users\\evan\\Documents\\formations\\code\\javascript"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.fontFamily": "Fira Code",
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"editor.fontLigatures": true,
+		"liveServer.settings.multiRootWorkspaceName": "javascript"
+	}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form method="POST">
+
+        <input type="text" id="monChamp1" name="test"></input>
+        <input type="text" id="monChamp12" name="test"></input>
+
+        <input type="checkbox" id="monChamp13" value="newletter" name="typeenvoi"></input>
+        <input type="checkbox" id="monChamp14" value="sms" name="typeenvoi"></input>
+
+        <!-- <input type="submit" value="Envoyer"> -->
+        <input type="button" onclick="console.log('oh oui !');" value="Cliquez sur moi">
+        <button onclick="console.log('oh oui !');">Cliquer sur moi !</button>
+
+        <button onclick="clickOnMe();">Cliquer sur moi !</button>
+        <button id="btnAvecListener">Cliquer sur moi !</button>
+    </form>
+
+
+    <script>
+        document.write('ah que coucou');
+        document.write('<a href="#">coucou</a>');
+
+        const champ = document.getElementById('monChamp1');
+
+        console.log(champ.value);
+
+        function clickOnMe() {
+            console.log('oh oui ! ');
+        }
+
+        const buttonListener = document.getElementById('btnAvecListener');
+
+        buttonListener.addEventListener('click', clickOnMe);
+    </script>
+</body>
+
+</html>

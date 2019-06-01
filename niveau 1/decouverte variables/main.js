@@ -47,6 +47,8 @@ if(Number.isInteger(12.0003)) {
 var uneChaine = 'coucou' + ' ca va ?';
 uneChaine += maVariableSansVar + '.';
 
+
+
 // Interpolation 
 var uneChaine2 = `coucou cava ${maVariableSansVar}. ${uneVarEntiere}`;
 
