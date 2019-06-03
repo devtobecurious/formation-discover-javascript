@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="button" id="btnClick" value="Click on me !">
+
+    <input type="button" class="a-cliquer" value="click 1">
+    <input type="button" class="a-cliquer" value="click 2">
+
+    <select id="uneListe">
+        <option value="1" selected>Famille 1</option>
+        <option value="2">Famille 2</option>
+    </select>
+
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
+
+    <script>
+        $(document).ready(function () {
+            console.log('je suis installé !!');
+
+            let choixFamille = $('#uneListe').val();
+
+            $('.a-cliquer').click(function () {
+                console.log('Mais vous etes fou, oh oui !');
+            });
+
+            $('input[type="textbox"]')
+
+            // on se met toujours dans le $(document).ready
+
+            $("#btnClick").click(function () {
+                console.log('oh oui !');
+            });
+
+            const uneF = function () {
+                console.log('oh oui !');
+            }
+            $("#btnClick").click(uneF);
+        });
+    </script>
+</body>
+
+</html>

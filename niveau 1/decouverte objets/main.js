@@ -170,3 +170,26 @@ unTimer.execute(2, () => {
 unTimer.execute(3, function () {
     console.log('exécutée, après !');
 });
+
+
+var unObj = {};
+
+// code qui fonctionne
+// unObj.uneNouvellMethode = () => {
+//     alert('coucou');
+// };
+
+// unObj.uneNouvellMethode();
+
+// code qui ne fonctionne pas
+// unObj = Object.create(null).uneNouvellMethode = () => {
+//     alert('coucou');
+// };
+
+// code qui fonctionne : en 2 étapes
+unObj = Object.create(null);
+unObj.uneNouvellMethode = () => {
+    alert('coucou');
+};
+
+unObj.uneNouvellMethode();

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="container">
+
+    </div>
+
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://swapi.co/api/people',
+                success: function (result) {
+                    console.log(result);
+
+                    let html = '';
+                    result.results.forEach(element => {
+                        html += '<div>' + element.name + '</div>';
+                    });
+                    $("#container").html(html);
+                },
+                error: function (error) {
+
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

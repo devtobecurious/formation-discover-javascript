@@ -20,10 +20,12 @@
 
         <!-- <input type="submit" value="Envoyer"> -->
         <input type="button" onclick="console.log('oh oui !');" value="Cliquez sur moi">
-        <button onclick="console.log('oh oui !');">Cliquer sur moi !</button>
+        <!-- <button onclick="console.log('oh oui !');">Cliquer sur moi !</button>
 
         <button onclick="clickOnMe();">Cliquer sur moi !</button>
-        <button id="btnAvecListener">Cliquer sur moi !</button>
+        <button id="btnAvecListener">Cliquer sur moi !</button> -->
+
+        <input id="btnAvecListener" type="submit" value="click to submit">
     </form>
 
 
@@ -35,13 +37,17 @@
 
         console.log(champ.value);
 
-        function clickOnMe() {
+        function clickOnMe(e) {
             console.log('oh oui ! ');
+
+            e.preventDefault(); // Pour stopper la propagation
         }
 
         const buttonListener = document.getElementById('btnAvecListener');
 
         buttonListener.addEventListener('click', clickOnMe);
+        // ne fonctionne pas : le submit c'est pour la form
+        // buttonListener.addEventListener('submit', clickOnMe);
     </script>
 </body>
 

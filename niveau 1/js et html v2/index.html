@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="POST">
+        <input type="text" name="unChampDeSaisie">
+        <input type="submit" id="unBouton" value="Ajouter">
+    </form>
+
+    <script>
+        const monButton = document.getElementById("unBouton");
+
+        function maFonction(event) {
+            console.log('coucou', event.target, event.type);
+
+            var tousleschampssontOK = false;
+
+            // Quel code il faut mettre ? 
+            // si tous les champs doitvent etre valides
+
+            if (!tousleschampssontOK)
+                event.preventDefault();
+        }
+
+        monButton.addEventListener('click', maFonction);
+    </script>
+</body>
+
+</html>

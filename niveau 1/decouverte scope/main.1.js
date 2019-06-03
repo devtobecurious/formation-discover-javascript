@@ -6,7 +6,7 @@ const monObjet = {
 var name = 'luke';
 
 function appelerName() {
-    console.log(this.name);
+    console.log(this.name, this);
 }
 
 window.appelerName();
