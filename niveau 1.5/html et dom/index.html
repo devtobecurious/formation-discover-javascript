@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        div#game {
+            border: 1px solid red;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+
+        div#asteroid {
+            border: 1px solid green;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+    </style>
+
+    <div id="game">
+    </div>
+
+    <div id="asteroid">
+        </div>
+
+    <script>
+        const game = document.getElementById("game");
+        const asteroid = document.getElementById("asteroid");
+
+        asteroid.style.left = (window.innerHeight - 0) + 'px';
+
+        game.style.width = "500px";
+        game.style.left = '200px';
+        game.style.top = '400px';
+
+        setInterval(() => {
+            let newLeft = Math.floor(Math.random() * 100);
+
+            let oldLeft = parseInt(asteroid.style.left);
+
+            for (let index = 0; index < newLeft; index++) {
+                setTimeout(() => {
+                    oldLeft = oldLeft - index;
+
+                    asteroid.style.left = oldLeft + 'px';
+                }, 100);
+            }
+        }, 100);
+
+        window.addEventListener('keydown', (event) => {
+            const oldLeft = parseInt(game.style.left);
+            const oldTop = parseInt(game.style.top);
+
+            console.log('event: ', event);
+
+            let stepLeft = 0;
+            let stepTop = 0;
+
+            if (event.key == 'ArrowUp' || event.key == 'ArrowDown') {
+                if (event.key == 'ArrowUp') {
+                    stepTop = -1;
+                } else {
+                    stepTop = 1;
+                }
+            }
+
+            if (event.key == 'ArrowLeft' || event.key == 'ArrowRight') {
+                if (event.key == 'ArrowLeft') {
+                    stepLeft = -1;
+                } else {
+                    stepLeft = 1;
+                }
+            }
+
+            stepLeft = (stepLeft * 10) + oldLeft;
+            stepTop = (stepTop * 10) + oldTop;
+
+            game.style.left = stepLeft + 'px';
+            game.style.top = stepTop + 'px';
+        });
+    </script>
+</body>
+</html>
