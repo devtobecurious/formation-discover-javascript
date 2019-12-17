@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        function getStarWarsPeoples() {
-            console.log('0. getStarWarsPeoples ?');
-            return fetch('https://swapi.co/api/people', { mode:"cors" });
-        }    
+        function loadScript(src) {
+            console.log('0. loadScript');
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    console.log('1. loadScript');
+
+                    let script = document.createElement('script');
+                    script.src = src;
+
+                    script.onload = () => resolve(script);
+                    script.onerror = () => reject(new Error(`Script load error for ${src}`));
+
+                    document.head.append(script);
+                }, 1500);
+            });
+        }
+
+        async function loadSerialJs() {
+            console.log('0. loadOneScript');
+
+            await loadScript('https://code.jquery.com/jquery-3.4.1.slim.js');
+            await loadScript('https://code.jquery.com/jquery-3.4.2.slim.js');
+
+            console.log('1. loadOneScript ?');
+        }
+
+        //loadSerialJs();
+
+        function loadParallelJs() {
+            const array = [];
+
+            array.push(loadScript('https://code.jquery.com/jquery-3.4.1.slim.js'),
+                       loadScript('https://code.jquery.com/jquery-3.4.2.slim.js'));
+            return Promise.all(array);
+        }
+
+        // charge quand meme les fichiers mais en parallèle !
+        loadParallelJs();
     </script>
 </body>
+
 </html>
