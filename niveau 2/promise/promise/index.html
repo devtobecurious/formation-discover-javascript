@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses
+        // https://www.sitepoint.com/deeper-dive-javascript-promises/
+        // https://medium.com/@pyrolistical/how-to-get-out-of-promise-hell-8c20e0ab0513
+        // https://medium.com/better-programming/should-i-use-promises-or-async-await-126ab5c98789
+
+        function superlongue() {
+            setTimeout(() => {
+               console.log('A que johny');
+            }, 1000);
+        }
+
+        // console.log('Avant ?');
+        // superlongue();
+        // console.log('Après ?');
+        
+        // résolution directe
+        Promise.resolve(superlongue()).then(result => console.log('result', result));
+
+        function getStarWarsPeoples() {
+            console.log('0. getStarWarsPeoples ?');
+            return fetch('https://swapi.co/api/people', { mode:"cors" });
+        }
+
+        function getStarWarsOnePeople(url) {
+            console.log('0. getStarWarsOnePeople ?');
+
+            return fetch(url, { mode:"cors" });
+        }
+
+        const promise = getStarWarsPeoples();
+        console.log('promise', promise);
+
+        getStarWarsPeoples().then(results => {
+            return results.json();
+        }).then(data => {
+            return getStarWarsOnePeople(data.results[0].url);
+        }).then(promise => promise.json().then(item => console.log('item', item)));
+
+        
+        getStarWarsPeoples()
+            .then(item => console.log('1.0', 1.0))
+            .then(item => console.log('2.0', 2.0));
+
+        const array = [];
+        array.push(getStarWarsOnePeople('https://swapi.co/api/people/1'), getStarWarsOnePeople('https://swapi.co/api/people/2'));
+
+        // Promise all : parallelisation, avec tableau de promises
+        Promise.all(array)
+                .then(value => {
+                    console.log('all ?', value);
+
+                    let subArray = [];
+
+                    value.map(prom => subArray.push(prom.json()));
+
+                    return Promise.all(subArray);
+                }).then(item => console.log('(?? object) :', item));
+
+        // création de promise
+        
+        function testCustomPromise() {
+            console.log('0. testCustomPromise');
+            return new Promise(function(resolve, reject) {
+                console.log('1. testCustomPromise');
+                setTimeout(() => {
+                    console.log('2. testCustomPromise');
+                    resolve('end');
+                }, 1500);
+            });
+        }
+
+        testCustomPromise();
+
+        testCustomPromise().then(item => console.log(`3. testCustomPromise ${item}`));
+    </script>
+</body>
+</html>
