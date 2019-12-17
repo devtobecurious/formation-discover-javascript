@@ -7,25 +7,16 @@
     <title>Document</title>
 </head>
 <body>
+    
     <script>
-        function withClosureIncrement() {
-            var incrementeur = 0;
+        "use strict"
+        // not present > polyfill : https://github.com/github/fetch
 
-            return () => {
-                return incrementeur ++; // the variable is known here !
-            }
-        }
-
-        var increment = withClosureIncrement();
-        var increment2 = withClosureIncrement();
-
-        increment();
-        var result = increment();
-
-        console.log(result);
-
-        increment2();
-        console.log(increment2());
-    </script>
+       if (window.fetch) {
+           console.log('object :', null);
+            window.fetch('https://swapi.co/api/people', { mode:"cors" }).then(response => { console.log(response); response.json().then(result => console.log('result :', result)); })
+                                                        .catch(error => console.log('error :', error));
+       }
+   </script>
 </body>
 </html>
