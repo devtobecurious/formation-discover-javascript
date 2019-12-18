@@ -54,6 +54,7 @@ const unObjetVide = {};
 // on utilise les lambdas
 unObjetVide.voler = () => {
     console.log('I believe I can fly');
+    // attention ici, le this c'est le window ! :O
 };
 unObjetVide.voler();
 
@@ -99,7 +100,7 @@ monVaisseau2 = new Vaisseau();
 
 
 // 4° façpn de créer un objet en js
-var monObjetCree = Object.create();
+var monObjetCree = Object.create(null);
 monObjetCree.direBonjour = function () {
     console.log('hello');
 };
@@ -111,6 +112,12 @@ monObjetCree.direBonjour();
 
 
 // heritage
+class Vaisseau3 extends  Vaisseau {
+
+}
+
+const vais3 = new Vaisseau3('e', 12);
+
 class Vaisseau2 extends Vaisseau {
     constructor(name, size, color) {
         super(name, size);
